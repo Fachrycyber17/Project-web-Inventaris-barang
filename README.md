@@ -5,7 +5,7 @@ Aplikasi untuk membantu pengelolaan peminjaman barang inventaris seperti misalny
 kamera, alat laboratorium, peralatan organisasi, atau fasilitas kampus.aplikasi ini dibuat untuk untuk menunjang kemudahan dalam peminjaman barang
 
 Latar Belakang
-Pnengelolaan barang inventaris dan pencatatan peminjaman dapat dilakukan secara manula akan tetapi user akan kesulitan
+Pengelolaan barang inventaris dan pencatatan peminjaman dapat dilakukan secara manula akan tetapi user akan kesulitan
 mengelola data barang serta kesulitan mengetahui barang apa saja yang dipinjam,status peminjaman dan riwayat peminjaman menjadi tantangan dalam peminjaman offline
 
 Tujuan 
@@ -16,12 +16,24 @@ Tujuan
 5. membuat data peminjaman lebih efisien dan terstruktur
 
 Target Pengguna
-Admin CS
-Peminjam
-Petugas
+- Admin
+- Admin CS
+- Peminjam
+- Petugas
 
 Fitur Utama
-- 
+- Login dan Log out
+- Dashboard
+- Session dan Proteksi halaman
+- Pengelolaan data barang
+- Pengelolaan data peminjaman
+- Status Peminjaman
+- Tambah data
+- Edit data
+- Memakai id setiap barang
+- Memberi batas waktu 3 hari peminjaman
+- Memberi history peminjaman
+  
 
 Data Utana
 1. Users
@@ -45,6 +57,7 @@ Struktur Folder Awal
 
 
 Halaman Awal 
+
 
 Status Pengembangan
 
