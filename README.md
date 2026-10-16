@@ -5,6 +5,7 @@ Aplikasi untuk membantu pengelolaan peminjaman barang inventaris seperti misalny
 kamera, alat laboratorium, peralatan organisasi, atau fasilitas kampus.aplikasi ini dibuat untuk untuk menunjang kemudahan dalam peminjaman barang
 
 Latar Belakang
+
 Pengelolaan barang inventaris dan pencatatan peminjaman dapat dilakukan secara manula akan tetapi user akan kesulitan
 mengelola data barang serta kesulitan mengetahui barang apa saja yang dipinjam,status peminjaman dan riwayat peminjaman menjadi tantangan dalam peminjaman offline
 
