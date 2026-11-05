@@ -1,11 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #d1d1d1; /* Warna abu-abu latar belakang */
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #9e9e9e;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #7a7a7a;
+        }
+
+        .logo {
+            padding: 20px;
+            font-size: 22px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            padding: 12px 20px;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        .nav-menu a.active {
+            background-color: #2b2b2b;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .header {
+            padding: 15px 25px;
+            border-bottom: 2px solid #a8a8a8;
+            background-color: #d1d1d1;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            color: #000;
+        }
+
+        .dashboard-container {
+            padding: 20px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .summary-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            background-color: #e0e0e0;
+            border: 1px solid #b3b3b3;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 2px 3px 5px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .middle-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .chart-container {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .chart-title {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .bars {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 120px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #999;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .bar {
+            width: 25px;
+            background-color: #9cd3fb;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .bar-label {
+            font-size: 11px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .list-title {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .list-item-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .square-icon {
+            width: 12px;
+            height: 12px;
+            background-color: #000;
+            border-radius: 2px;
+        }
+
+        /* Table CSS */
+        .table-card {
+            background-color: #e0e0e0;
+            border: 1px solid #b3b3b3;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 2px 3px 5px rgba(0,0,0,0.1);
+        }
+
+        .table-title {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border: 1px solid #b3b3b3;
+        }
+
+        th, td {
+            border: 1px solid #b3b3b3;
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #bebebe;
+            font-weight: bold;
+        }
+
+        .text-red {
+            color: #d32f2f;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <aside class="sidebar">
+        <div class="logo">PinjamIn</div>
+        <nav class="nav-menu">
+            <a href="dashboard admin.html" class="active">Dashboard</a>
+            <a href="kelola peminjaman.html">Kelola peminjaman</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>DASHBOARD</h1>
+        </header>
+
+        <div class="dashboard-container">
+            <div class="summary-row">
+                <div class="card">
+                    <div class="card-title">Total barang</div>
+                    <div class="card-value">120</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Sedang dipinjam</div>
+                    <div class="card-value">18</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Menunggu persetujuan</div>
+                    <div class="card-value">5</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Terlambat</div>
+                    <div class="card-value">3</div>
+                </div>
+            </div>
+
+            <div class="middle-row">
+                <div class="card chart-container">
+                    <div class="chart-title">Tren peminjaman per bulan</div>
+                    <div class="bars">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 40%;"></div>
+                            <div class="bar-label">Mei</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 60%;"></div>
+                            <div class="bar-label">Jun</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 35%;"></div>
+                            <div class="bar-label">Jul</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 75%;"></div>
+                            <div class="bar-label">Agu</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 50%;"></div>
+                            <div class="bar-label">Sep</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 90%;"></div>
+                            <div class="bar-label">Okt</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="list-title">Barang paling sering dipinjam</div>
+                    <div class="list-item">
+                        <div class="list-item-left"><div class="square-icon"></div> Laptop</div>
+                        <div>42x</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-left"><div class="square-icon"></div> Proyektor</div>
+                        <div>35x</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-left"><div class="square-icon"></div> Camera</div>
+                        <div>28x</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-left"><div class="square-icon"></div> Mic wireless</div>
+                        <div>19x</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-left"><div class="square-icon"></div> Speaker</div>
+                        <div>12x</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-title">Peminjaman terlambat</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Peminjaman</th>
+                            <th>Barang</th>
+                            <th>Jatuh tempo</th>
+                            <th>Telat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Siska</td>
+                            <td>Proyektor</td>
+                            <td>10/10/2026</td>
+                            <td class="text-red">6 Hari</td>
+                        </tr>
+                        <tr>
+                            <td>Alvin</td>
+                            <td>Laptop</td>
+                            <td>12/10/2026</td>
+                            <td class="text-red">4 Hari</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
