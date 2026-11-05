@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - PinjamIn</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #e5e5e5; 
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 450px;
+            text-align: center;
+        }
+
+        .logo-container {
+            font-size: 56px;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        .logo-i {
+            position: relative;
+            display: inline-block;
+        }
+
+        
+
+        .subtitle {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: #111;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            background-color: #bcbcbc; 
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: #666;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background-color: #222222; 
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn-submit:hover {
+            background-color: #000000;
+        }
+
+        .footer-text {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .footer-text a {
+            color: #4da3ff; 
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            Pinjam<span class="logo-i">I</span>n
+        </div>
+        <div class="subtitle">Daftar akun baru kamu</div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="masukkan nama anda" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="masukkan email anda" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="masukkan password anda" required>
+            </div>
+
+            <button type="button" class="btn-submit" onclick="prosesDaftar()">Daftar</button>
+        </form>
+
+        <div class="footer-text">
+            Sudah punya akun? <a href="login.html">Masuk</a>
+        </div>
+    </div>
+
+    <script>
+        function prosesDaftar() {
+        // 1. Mengambil data dari input
+        const nama = document.getElementById('nama').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Mengambil elemen tombol untuk diberi efek interaktif
+        const btn = document.querySelector('.btn-submit');
+
+        // 2. Validasi Input Dasar
+        if(!nama || !email || !password) {
+            alert("Harap lengkapi semua data sebelum mendaftar!");
+            return; // Menghentikan proses jika ada yang kosong
+        }
+
+        // 3. Efek Visual Interaktif (Loading State)
+        btn.innerHTML = "Memproses...";
+        btn.style.backgroundColor = "#555555";
+        btn.style.cursor = "not-allowed";
+        btn.disabled = true;
+
+        // 4. Simulasi pengiriman data (Nanti diganti dengan Fetch API ke PHP)
+        // setTimeout digunakan di sini hanya untuk simulasi jeda waktu server selama 1.5 detik
+        setTimeout(() => {
+            alert(`Pendaftaran berhasil! Selamat datang, ${nama}.`);
+            
+            // Mengembalikan tombol ke wujud semula
+            btn.innerHTML = "Daftar";
+            btn.style.backgroundColor = "#222222";
+            btn.style.cursor = "pointer";
+            btn.disabled = false;
+
+            // Mengarahkan pengguna secara otomatis ke halaman login
+            // window.location.href = "login.html"; 
+        }, 1500);
+    }
+    </script>
+</body>
+</html>
