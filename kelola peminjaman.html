@@ -1,11 +1,335 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kelola peminjaman admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #dcdcdc; /* Latar belakang abu-abu terang */
+            overflow: hidden; /* Mencegah scroll ganda di tingkat body */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background-color: #8c8c8c;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            border-right: 1px solid #7a7a7a;
+        }
+
+        .logo {
+            padding: 25px 20px;
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #222;
+            padding: 15px 20px;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        .nav-menu a:hover {
+            background-color: #7a7a7a;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #e0e0e0;
+        }
+
+        /* Header Atas */
+        .header {
+            padding: 20px 30px;
+            background-color: #d4d4d4;
+            border-bottom: 2px solid #b8b8b8;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Area Konten Dalam */
+        .content-body {
+            padding: 25px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Filter & Search Bar */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .filter-btn.active {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .filter-btn.inactive {
+            background-color: #b8b8b8;
+            color: #fff;
+        }
+
+        .search-box {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 13px;
+            width: 200px;
+        }
+
+        /* Table Card */
+        .table-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px 12px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #b8b8b8;
+            font-weight: bold;
+            color: #333;
+        }
+
+        td {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-setuju {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 1px solid #1a1a1a;
+            padding: 4px 12px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .btn-tolak {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #1a1a1a;
+            padding: 4px 12px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Return Process Card */
+        .return-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .return-card h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #666;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+
+        .bottom-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .denda-badge {
+            background-color: #d1d1d1;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn-konfirmasi {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">PinjamIn</div>
+        <nav class="nav-menu">
+            <a href="dashboard admin.html">Dashboard</a>
+            <a href="kelola peminjaman.html">kelola peminjaman</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            KELOLA PEMINJAMAN
+        </header>
+
+        <div class="content-body">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="filters">
+                    <button class="filter-btn active">Menunggu (5)</button>
+                    <button class="filter-btn inactive">Dipinjam (18)</button>
+                    <button class="filter-btn inactive">Terlambat (2)</button>
+                    <button class="filter-btn inactive">Selesai</button>
+                </div>
+                <input type="text" class="search-box" placeholder="Cari peminjam...">
+            </div>
+
+            <!-- Table Card -->
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Peminjam</th>
+                            <th>Barang</th>
+                            <th>Jml</th>
+                            <th>Tgl Pinjam</th>
+                            <th>Kembali</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fachry</td>
+                            <td>Camera</td>
+                            <td>1</td>
+                            <td>17/10/2026</td>
+                            <td>20/10/2026</td>
+                            <td class="action-buttons">
+                                <button class="btn-setuju">Setuju</button>
+                                <button class="btn-tolak">Tolak</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rahma</td>
+                            <td>Tripod</td>
+                            <td>2</td>
+                            <td>17/10/2026</td>
+                            <td>19/10/2026</td>
+                            <td class="action-buttons">
+                                <button class="btn-setuju">Setuju</button>
+                                <button class="btn-tolak">Tolak</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Dimas</td>
+                            <td>Mic wireless</td>
+                            <td>2</td>
+                            <td>18/10/2026</td>
+                            <td>21/10/2026</td>
+                            <td class="action-buttons">
+                                <button class="btn-setuju">Setuju</button>
+                                <button class="btn-tolak">Tolak</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Proses Pengembalian Card -->
+            <div class="return-card">
+                <h3>Proses Pengembalian</h3>
+                <div class="input-group">
+                    <input type="text" class="input-box" placeholder="Scan QR atau ketik kode">
+                    <!-- Dropdown digunakan untuk akurasi data -->
+                    <select class="input-box">
+                        <option value="" disabled selected>Kondisi Barang...</option>
+                        <option value="baik">Baik / Normal</option>
+                        <option value="rusak_ringan">Rusak Ringan</option>
+                        <option value="rusak_berat">Rusak Berat</option>
+                    </select>
+                </div>
+                <div class="bottom-actions">
+                    <div class="denda-badge">Denda otomatis: Rp 0</div>
+                    <button class="btn-konfirmasi">Konfirmasi kembali</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
