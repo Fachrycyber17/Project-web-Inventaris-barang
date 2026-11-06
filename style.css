@@ -975,3 +975,99 @@
             font-weight: bold;
         }
     </style>
+</script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #d9d9d9; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            font-size: 42px;
+            margin: 0;
+            font-weight: normal;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            border: none;
+            background-color: #bcbcbc; 
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); 
+            outline: none;
+            color: #333;
+        }
+
+        .input-group input::placeholder {
+            color: #666;
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn-login:hover {
+            background-color: #222;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .footer-text a {
+            color: #4da6ff; 
+            text-decoration: underline;
+        }
+    </style>
