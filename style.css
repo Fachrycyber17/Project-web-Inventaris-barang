@@ -1,1 +1,87 @@
+<style>
+        body {
+            background-color: #e5e5e5; 
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        .container {
+            width: 450px;
+            text-align: center;
+        }
+
+        .logo-container {
+            font-size: 56px;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        .logo-i {
+            position: relative;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: #111;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            background-color: #bcbcbc; 
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: #666;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background-color: #222222; 
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn-submit:hover {
+            background-color: #000000;
+        }
+
+        .footer-text {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .footer-text a {
+            color: #4da3ff; 
+            text-decoration: underline;
+        }
+    </style>
