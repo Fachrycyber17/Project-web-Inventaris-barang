@@ -1,9 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Pinjamin</title>
+    <title>Login - PinjamIn</title>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="logo-container">
+            <h1 class="logo">PinjamIn</h1>
+            <div class="subtitle">Masuk ke akun kamu</div>
+        </div>
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="masukkan email anda">
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="masukkan password anda">
+        </div>
+
+        
+        <button class="btn-login" onclick="prosesLogin()">Masuk</button>
+
+        <div class="footer-text">
+            Belum punya akun? <a href="daftar.html">Daftar</a>
+        </div>
+    </div>
+
+    <script>
+        function prosesLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+           
+            if (email && password) {
+               
+                window.location.href = "dashboard.html";
+            } else {
+               
+                alert("Harap masukkan email dan password Anda!");
+            }
+        }
+    </script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +54,7 @@
         }
 
         body {
-            background-color: #d9d9d9; /* Warna latar belakang abu-abu terang */
+            background-color: #d9d9d9; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,7 +69,6 @@
             padding: 20px;
         }
 
-        /* Bagian Logo dan Judul */
         .logo-container {
             margin-bottom: 25px;
         }
@@ -39,16 +81,6 @@
             display: inline-block;
             letter-spacing: 1px;
         }
-        
-        /* Menambahkan icon hati kecil di atas huruf i */
-        .logo::after {
-            content: "♡";
-            font-size: 16px;
-            position: absolute;
-            top: -12px;
-            right: 18px;
-            font-weight: bold;
-        }
 
         .subtitle {
             font-size: 18px;
@@ -56,7 +88,6 @@
             margin-top: 5px;
         }
 
-        /* Bagian Form Input */
         .input-group {
             text-align: left;
             margin-bottom: 20px;
@@ -74,8 +105,8 @@
             padding: 14px;
             font-size: 15px;
             border: none;
-            background-color: #bcbcbc; /* Warna abu-abu gelap untuk input */
-            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); /* Efek bayangan di bawah input */
+            background-color: #bcbcbc; 
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); 
             outline: none;
             color: #333;
         }
@@ -84,7 +115,6 @@
             color: #666;
         }
 
-        /* Tombol Masuk */
         .btn-login {
             width: 100%;
             background-color: #000;
@@ -101,44 +131,15 @@
             background-color: #222;
         }
 
-        /* Teks Footer */
         .footer-text {
             font-size: 16px;
             color: #333;
         }
 
         .footer-text a {
-            color: #4da6ff; /* Warna biru muda */
+            color: #4da6ff; 
             text-decoration: underline;
         }
     </style>
-</head>
-<body>
-
-    <div class="login-container">
-        <div class="logo-container">
-            <h1 class="logo">Pinjamin</h1>
-            <div class="subtitle">Masuk ke akun kamu</div>
-        </div>
-
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="masukkan email anda">
-        </div>
-
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="masukkan password anda">
-        </div>
-
-        <button class="btn-login">Masuk</button>
-
-        <div class="footer-text">
-            Belum punya akun? <a href="#">Daftar</a>
-        </div>
-    </div>
-</head>
-<body>
-    
 </body>
 </html>
