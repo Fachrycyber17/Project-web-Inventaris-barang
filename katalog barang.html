@@ -164,6 +164,13 @@
             justify-content: flex-end;
             padding: 15px;
             position: relative;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.3);
         }
 
         .card-image {
@@ -231,42 +238,42 @@
                 </div>
 
                 <div class="grid-container">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="https://png.pngtree.com/png-vector/20240211/ourmid/pngtree-transparent-background-canon-eos-r-mirrorless-digital-camera-with-24-105mm-png-image_11734469.png" alt="Camera">
-                        </div>
-                        <div class="card-label">Camera</div>
+                   <div class="card" onclick="window.location.href='form_peminjaman.html?barang=camera'">
+                     <div class="card-image">
+                        <img src="https://png.pngtree.com/png-vector/20240211/ourmid/pngtree-transparent-background-canon-eos-r-mirrorless-digital-camera-with-24-105mm-png-image_11734469.png" alt="Camera">
                     </div>
+                <div class="card-label">Camera</div>
+            </div>
 
-                    <div class="card">
+                    <div class="card" onclick="window.location.href='form_peminjaman.html?barang=Proyektor'">
                         <div class="card-image">
                             <img src="https://png.pngtree.com/thumb_back/fh260/background/20220908/pngtree-multimedia-projector-isolated-on-white-background-media-photographic-blue-photo-image_6552572.jpg" alt="Proyektor">
                         </div>
                         <div class="card-label">Proyektor</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="window.location.href='form_peminjaman.html?barang=Laptop'">
                         <div class="card-image">
                             <img src="https://thumbs.dreamstime.com/b/silver-laptop-blank-screen-set-white-background-screen-open-displaying-no-content-keyboard-features-black-470482540.jpg" alt="Laptop">
                         </div>
                         <div class="card-label">Laptop</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="window.location.href='form_peminjaman.html?barang=mic wireless'">
                         <div class="card-image">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/006/306/294/small/new-wireless-microphone-isolated-on-white-background-free-photo.JPG" alt="Mic wireless">
                         </div>
                         <div class="card-label">Mic wireless</div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" onclick="window.location.href='form_peminjaman.html?barang=tripod'">
                         <div class="card-image">
                             <img src="https://toppng.com/uploads/preview/best-free-video-camera-on-tripod-png-image-video-camera-tripod-11563050894nlqqzyijiu.png" alt="Tripod">
                         </div>
                         <div class="card-label">tripod</div>
                     </div>
                     
-                    <div class="card">
+                    <div class="card" onclick="window.location.href='form_peminjaman.html?barang=Speaker'">
                         <div class="card-image">
                             <img src="https://img.magnific.com/premium-psd/red-speaker-isolated-transparent-background_1136825-15597.jpg?semt=ais_hybrid&w=740&q=80" alt="Speaker">
                         </div>
