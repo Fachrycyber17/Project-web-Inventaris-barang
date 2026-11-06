@@ -294,3 +294,20 @@
             color: #d32f2f;
         }
     </style>
+
+<title>Form Peminjaman - PinjamIn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #dcdcdc;
+            overflow: hidden;
+        }
+
