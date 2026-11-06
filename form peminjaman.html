@@ -1,11 +1,371 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form Peminjaman - PinjamIn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #dcdcdc;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background-color: #8c8c8c;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            border-right: 1px solid #7a7a7a;
+        }
+
+        .logo {
+            padding: 25px 20px;
+            font-size: 22px;
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #222;
+            padding: 15px 20px;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        .nav-menu a.active {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #e4e4e4;
+        }
+
+        /* Breadcrumb Header */
+        .breadcrumb-header {
+            padding: 20px 30px;
+            border-bottom: 2px solid #b8b8b8;
+            font-size: 16px;
+            color: #333;
+            background-color: #e4e4e4;
+        }
+
+        /* Content Body (Two Columns) */
+        .content-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Left Column: Product Info & Calendar */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #d1d1d1;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 150px;
+            height: 150px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: normal;
+            align-self: flex-start;
+        }
+
+        .product-meta {
+            font-size: 14px;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .badges {
+            display: flex;
+            gap: 10px;
+        }
+
+        .badge {
+            background-color: #999;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+
+        /* Custom Calendar Box */
+        .calendar-box {
+            background-color: #d1d1d1;
+            border: 1px solid #a8a8a8;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .calendar-box h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .calendar-grid {
+            background-color: #b8b8b8;
+            padding: 15px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .day-header {
+            font-size: 12px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .date-number {
+            width: 25px;
+            height: 25px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin: 0 auto;
+        }
+
+        .date-number.booked {
+            color: #ff4d4d; /* Warna merah untuk tanggal yang sudah dipesan */
+        }
+
+        /* Right Column: Form Box */
+        .form-box {
+            background-color: #dcdcdc;
+            border: 1px solid #b8b8b8;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .form-box h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #a8a8a8;
+            border-radius: 5px;
+            background-color: #e4e4e4;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .btn-batal {
+            padding: 10px 20px;
+            border: 1px solid #a8a8a8;
+            background-color: #e4e4e4;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-ajukan {
+            padding: 10px 20px;
+            background-color: #000066; /* Warna biru gelap sesuai mockup */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <aside class="sidebar">
+        <div class="logo">PinjamIn</div>
+        <nav class="nav-menu">
+            <a href="katalog_barang.html" class="active">Katalog Barang</a>
+            <a href="#">Peminjaman Saya</a>
+            <a href="#">Riwayat</a>
+            <a href="#">Profile</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <!-- Header Roti Jala (Breadcrumb) -->
+        <div class="breadcrumb-header">
+            Katalog &gt; Mic wireless
+        </div>
+
+        <div class="content-body">
+            <!-- Kolom Kiri: Detail Produk -->
+            <div class="left-column">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/006/306/294/small/new-wireless-microphone-isolated-on-white-background-free-photo.JPG" alt="Mic Wireless">
+                    </div>
+                    <h3 class="product-name">Mic wireless</h3>
+                </div>
+                
+                <div>
+                    <div class="product-meta">Kode: ELK-004</div>
+                    <div class="badges">
+                        <span class="badge">Tersedia: 7</span>
+                        <span class="badge">Kondisi: Baik</span>
+                    </div>
+                </div>
+
+                <!-- Modul Kalender Visual -->
+                <div class="calendar-box">
+                    <h4>Kalender ketersediaan</h4>
+                    <div class="calendar-grid">
+                        <div class="day-header">M</div>
+                        <div class="day-header">S</div>
+                        <div class="day-header">S</div>
+                        <div class="day-header">R</div>
+                        <div class="day-header">K</div>
+                        <div class="day-header">J</div>
+                        <div class="day-header">S</div>
+                        
+                        <div class="date-number">1</div>
+                        <div class="date-number">2</div>
+                        <div class="date-number">3</div>
+                        <div class="date-number booked">4</div>
+                        <div class="date-number booked">5</div>
+                        <div class="date-number">6</div>
+                        <div class="date-number">7</div>
+                        <div class="date-number booked">8</div>
+                        <div class="date-number booked">9</div>
+                        <div class="date-number">10</div>
+                        <div class="date-number">11</div>
+                        <div class="date-number">12</div>
+                        <div class="date-number">13</div>
+                        <div class="date-number">14</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Form -->
+            <div class="form-box">
+                <h2>FORM PEMINJAMAN</h2>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <!-- Menggunakan type="number" untuk validasi angka -->
+                        <input type="number" class="form-control" value="1" min="1" max="7">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tanggal Pinjam</label>
+                            <!-- Menggunakan type="date" agar kalender sistem muncul -->
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Rencana Kembali</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Keperluan</label>
+                        <textarea class="form-control" placeholder="Tulis keperluan..." required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-batal">Batal</button>
+                        <button type="submit" class="btn-ajukan">Ajukan Peminjaman</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
