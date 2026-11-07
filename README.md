@@ -64,74 +64,27 @@ Teknologi
 
 Struktur Folder Awal
 
-pinjamin/
-├── index.php
-├── config/
-│   └── database.php
-├── includes/
-│   ├── auth.php              # session + cek role
-│   ├── header.php
-│   ├── footer.php
-│   └── functions.php         # hitung denda, catat log, format tanggal
-├── auth/
-│   ├── login.php
-│   ├── register.php
-│   └── logout.php
-├── admin/
-│   ├── dashboard.php
-│   ├── master/
-│   │   ├── categories.php
-│   │   ├── locations.php
-│   │   └── users.php
-│   ├── models/               # CRUD jenis perangkat
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   ├── edit.php
-│   │   └── delete.php
-│   ├── assets/               # CRUD unit fisik
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   ├── edit.php
-│   │   ├── delete.php
-│   │   ├── detail.php        # riwayat pinjam + servis unit ini
-│   │   └── qr.php            # cetak label QR
-│   ├── loans/
-│   │   ├── index.php
-│   │   ├── approve.php
-│   │   ├── handover.php      # serah terima (kondisi keluar)
-│   │   ├── return.php        # pengembalian (kondisi kembali + denda)
-│   │   └── print.php         # cetak bukti peminjaman
-│   ├── maintenance/
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   └── finish.php
-│   ├── fines.php
-│   ├── reports.php
-│   └── logs.php
-├── staff/                    # halaman petugas (atau pakai folder admin dengan cek role)
-│   ├── dashboard.php
-│   └── scan.php              # scan QR serah terima/pengembalian
-├── user/
-│   ├── dashboard.php
-│   ├── catalog.php           # daftar model + jumlah unit tersedia
-│   ├── model_detail.php
-│   ├── borrow.php
-│   ├── my_loans.php
-│   └── notifications.php
-├── api/                      # endpoint AJAX (pagination, search, notifikasi)
-│   ├── search.php
-│   └── paginate.php
-└── assets-web/               # supaya tidak bentrok dengan folder admin/assets
-    ├── css/style.css
-    ├── js/app.js
-    └── uploads/
+PinjamIn
+|___ LOGIN
+|____|___ USER (PEMINJAM)
+|____|____|____ Dasboard
+|____|____|____ Katalog Barang
+|____|____|____|_____ Form Peminjaman
+|____|____|____ Peminjaman saya
+|____|____|____ Riwayat
+|____|____|____ PRrofil
+|____|____ADMIM
+     |____|____ Dashboard admin
+     |____|____ Data barang (data barang)
+     |____|____ Peminjaman (kelola peminjaman)
+     |____|____ |____ Proses pengembalian
+     |____|____ Riwayat
+     |____|____ Profil
 
 Ide pengembangan Sesuai Target
 - Sekolah/Kampus: peminjaman alat lab, proyektor, ruang kelas
 - Kantor: inventaris laptop, kendaraan operasional
 - Komunitas/Perpustakaan: peminjaman buku dan alat
-- Rental kecil: kamer
-
   
 Halaman Awal 
 Halaman awal ini dirancang untuk mempermudah user dalam memantau dan meminjam fasilitas atau aset yang tersedia. User dapat mengecek ketersediaan barang secara real-time, mengajukan permohonan pinjam, serta melihat riwayat pengembalian secara mandiri di sini. Terdapat tombol Login/Daftar, serta ringkasan katalog perangkat yang tersedia. 
@@ -147,8 +100,8 @@ Status Pengembangan
 8. Pengujian dan hosting (PROGRES)
 
 Repository
-1. Repository:
-2. Tautan web:
+1. Repository: https://github.com/Fachrycyber17/Project-web-Inventaris-barang/edit/main/README.md
+2. Tautan web: 
 3. Akun uji coba: user (peminjam), admin, petugas (CANTUMKAN USERNAME, PASSWORD)
 
 Pengembangan Lanjutan 
