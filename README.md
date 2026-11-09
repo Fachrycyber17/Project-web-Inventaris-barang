@@ -1,15 +1,12 @@
 WEB INVENTARIS BARANG
 
 Deskripsi
-Aplikasi untuk membantu pengelolaan Peminjaman Perangkat Elektronik & IT yakni mencakupi Laptop/Notebook, Mouse, proyektor, Layar Proyektor, kamera digital, speaker portable, dan printer. Aplikasi ini dibuat untuk untuk menunjang kemudahan dalam peminjaman barang.
-
-Setiap perangkat dicatat sebagai unit tersendiri lengkap dengan kode aset, nomor seri, spesifikasi, tanggal pembelian, masa garansi, lokasi penyimpanan, dan kondisinya. Setiap unit dilengkapi QR code agar pencarian dan pencatatan di lapangan lebih cepat.
-
-Alur utama sistem adalah peminjam mengajukan permintaan, petugas atau admin menyetujui, perangkat diserahkan setelah pemeriksaan kelengkapan dan kondisi, lalu dikembalikan dan diperiksa ulang. Seluruh tahapan tercatat otomatis, termasuk perhitungan keterlambatan, denda, dan riwayat perawatan tiap unit. Dashboard dan laporan membantu pengelola melihat ketersediaan, perangkat yang terlambat, serta perangkat yang sering rusak.
+    Aplikasi untuk membantu pengelolaan Peminjaman Perangkat Elektronik & IT yakni mencakupi Laptop/Notebook, Mouse, proyektor, Layar Proyektor, kamera digital, speaker portable, dan printer. Aplikasi ini dibuat untuk untuk menunjang kemudahan dalam peminjaman barang.
+    Setiap perangkat dicatat sebagai unit tersendiri lengkap dengan kode aset, nomor seri, spesifikasi, tanggal pembelian, masa garansi, lokasi penyimpanan, dan kondisinya. Setiap unit dilengkapi QR code agar pencarian dan pencatatan di lapangan lebih cepat.
+    Alur utama sistem adalah peminjam mengajukan permintaan, petugas atau admin menyetujui, perangkat diserahkan setelah pemeriksaan kelengkapan dan kondisi, lalu dikembalikan dan diperiksa ulang. Seluruh tahapan tercatat otomatis, termasuk perhitungan keterlambatan, denda, dan riwayat perawatan tiap unit. Dashboard dan laporan membantu pengelola melihat ketersediaan, perangkat yang terlambat, serta perangkat yang sering rusak.
 
 Latar Belakang
-
-Perangkat elektronik dan IT merupakan aset bernilai tinggi yang menunjang kegiatan belajar mengajar, penelitian, maupun operasional kerja. Seiring bertambahnya jumlah perangkat dan jumlah pengguna, pengelolaan aset ini menjadi semakin kompleks. Di banyak instansi, pencatatan inventaris dan peminjaman masih dilakukan secara manual melalui buku catatan atau lembar spreadsheet yang terpisah-pisah. Pengelolaan manual tersebut menimbulkan sejumlah permasalahan, contohnya seperti data tidak akurat dan sulit ditelusuri, resiko kehilangan dan kerusakan, adanya jadwal bentrok, keterlambatan pengembalian tidak terpantau, perawatan tidak terjadwal, dan pelaporan yang memakan waktu.
+    Perangkat elektronik dan IT merupakan aset bernilai tinggi yang menunjang kegiatan belajar mengajar, penelitian, maupun operasional kerja. Seiring bertambahnya jumlah perangkat dan jumlah pengguna, pengelolaan aset ini menjadi semakin kompleks. Di banyak instansi, pencatatan inventaris dan peminjaman masih dilakukan secara manual melalui buku catatan atau lembar spreadsheet yang terpisah-pisah. Pengelolaan manual tersebut menimbulkan sejumlah permasalahan, contohnya seperti data tidak akurat dan sulit ditelusuri, resiko kehilangan dan kerusakan, adanya jadwal bentrok, keterlambatan pengembalian tidak terpantau, perawatan tidak terjadwal, dan pelaporan yang memakan waktu.
 
 Tujuan 
 1. Membuat sistem peminjaman online inventaris barang berbasis web 
@@ -42,7 +39,7 @@ Fitur Tambahan:
 - Scan QR Code untuk cek barang atau proses pinjam dengan cepat
 - Search bar
 - Notifikasi dan pengingat jatuh tempo
-- ID/kode asetr unik untuk setiap barang
+- ID/kode aset unik untuk setiap barang
 - Batas waktu peminjaman 3 hari 
 - Log aktivitas sistem 
 
@@ -67,81 +64,47 @@ Teknologi
 
 Struktur Folder Awal
 
-pinjamin/
-├── index.php
-├── config/
-│   └── database.php
-├── includes/
-│   ├── auth.php              # session + cek role
-│   ├── header.php
-│   ├── footer.php
-│   └── functions.php         # hitung denda, catat log, format tanggal
-├── auth/
-│   ├── login.php
-│   ├── register.php
-│   └── logout.php
-├── admin/
-│   ├── dashboard.php
-│   ├── master/
-│   │   ├── categories.php
-│   │   ├── locations.php
-│   │   └── users.php
-│   ├── models/               # CRUD jenis perangkat
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   ├── edit.php
-│   │   └── delete.php
-│   ├── assets/               # CRUD unit fisik
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   ├── edit.php
-│   │   ├── delete.php
-│   │   ├── detail.php        # riwayat pinjam + servis unit ini
-│   │   └── qr.php            # cetak label QR
-│   ├── loans/
-│   │   ├── index.php
-│   │   ├── approve.php
-│   │   ├── handover.php      # serah terima (kondisi keluar)
-│   │   ├── return.php        # pengembalian (kondisi kembali + denda)
-│   │   └── print.php         # cetak bukti peminjaman
-│   ├── maintenance/
-│   │   ├── index.php
-│   │   ├── create.php
-│   │   └── finish.php
-│   ├── fines.php
-│   ├── reports.php
-│   └── logs.php
-├── staff/                    # halaman petugas (atau pakai folder admin dengan cek role)
-│   ├── dashboard.php
-│   └── scan.php              # scan QR serah terima/pengembalian
-├── user/
-│   ├── dashboard.php
-│   ├── catalog.php           # daftar model + jumlah unit tersedia
-│   ├── model_detail.php
-│   ├── borrow.php
-│   ├── my_loans.php
-│   └── notifications.php
-├── api/                      # endpoint AJAX (pagination, search, notifikasi)
-│   ├── search.php
-│   └── paginate.php
-└── assets-web/               # supaya tidak bentrok dengan folder admin/assets
-    ├── css/style.css
-    ├── js/app.js
-    └── uploads/
+PinjamIn
+|___ LOGIN
+|____|___ USER (PEMINJAM)
+|____|____|____ Dashboard
+|____|____|____ Katalog Barang
+|____|____|____|_____ Form Peminjaman
+|____|____|____ Peminjaman saya
+|____|____|____ Riwayat
+|____|____|____ Profil
+|____|____ADMIN
+     |____|____ Dashboard admin
+     |____|____ Data barang (data barang)
+     |____|____ Peminjaman (kelola peminjaman)
+     |____|____ |____ Proses pengembalian
+     |____|____ Riwayat
+     |____|____ Profil
 
 Ide pengembangan Sesuai Target
 - Sekolah/Kampus: peminjaman alat lab, proyektor, ruang kelas
 - Kantor: inventaris laptop, kendaraan operasional
 - Komunitas/Perpustakaan: peminjaman buku dan alat
-- Rental kecil: kamer
-
   
 Halaman Awal 
-Link mockup di Figma: [PBW Mockup](https://www.figma.com/design/uWQ5QWUfcHc0gSI0xXmk6f/PBW-MOCKUP--Copy-)
+Halaman awal ini dirancang untuk mempermudah user dalam memantau dan meminjam fasilitas atau aset yang tersedia. User dapat mengecek ketersediaan barang secara real-time, mengajukan permohonan pinjam, serta melihat riwayat pengembalian secara mandiri di sini. Terdapat tombol Login/Daftar, serta ringkasan katalog perangkat yang tersedia. 
 
 Status Pengembangan
-Milestone 2 selesai: halaman statis, interaksi responsif, JS tanggal & validasi
+1. Perancangan database (SELESAI)
+2. Login dan manajemen pengguna (PROSES)
+3. Data master (kategori barang, model, unit) (PROGRES)
+4. Katalog dan from peminjaman (PROGRES)
+5. Persetujuan, pengembalian (PROGRES)
+6. Denda dan perawatan (BELUM)
+7. QR code (BELUM)
+8. Pengujian dan hosting (PROGRES)
 
 Repository
+1. Repository: https://github.com/Fachrycyber17/Project-web-Inventaris-barang/edit/main/README.md
+2. Tautan web: 
+3. Akun uji coba: user (peminjam), admin, petugas (CANTUMKAN USERNAME, PASSWORD)
 
 Pengembangan Lanjutan 
+1. Kalender reservasi untuk melihat jadwal pemakaian barang
+2. Ekspor laporan ke PDF dan Excel
+3. Penjadwalan perawatan berkala otomatis
