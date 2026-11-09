@@ -67,13 +67,13 @@ Struktur Folder Awal
 PinjamIn
 |___ LOGIN
 |____|___ USER (PEMINJAM)
-|____|____|____ Dasboard
+|____|____|____ Dashboard
 |____|____|____ Katalog Barang
 |____|____|____|_____ Form Peminjaman
 |____|____|____ Peminjaman saya
 |____|____|____ Riwayat
-|____|____|____ PRrofil
-|____|____ADMIM
+|____|____|____ Profil
+|____|____ADMIN
      |____|____ Dashboard admin
      |____|____ Data barang (data barang)
      |____|____ Peminjaman (kelola peminjaman)
