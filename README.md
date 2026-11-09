@@ -18,7 +18,6 @@ Tujuan
 Target Pengguna
 - Admin: mengelola data, user , laporan, dan pengaturan sistem
 - Peminjam: melihat katalog perangkat, mengajukan atau memesan peminjaman, dan memantau status serta riwayat pinjamannya.
-- Petugas: memproses serah terima dan pengembalian, memeriksa kondisi perangkat, serta mencatat perawatan dan perbaikan.
 
 Fitur Utama
 - Login, registrasi, dan logout
@@ -66,20 +65,16 @@ Struktur Folder Awal
 
 PinjamIn
 |___ LOGIN
+|___ DAFTAR
 |____|___ USER (PEMINJAM)
 |____|____|____ Dashboard
 |____|____|____ Katalog Barang
-|____|____|____|_____ Form Peminjaman
 |____|____|____ Peminjaman saya
 |____|____|____ Riwayat
 |____|____|____ Profil
 |____|____ADMIN
      |____|____ Dashboard admin
-     |____|____ Data barang (data barang)
-     |____|____ Peminjaman (kelola peminjaman)
-     |____|____ |____ Proses pengembalian
-     |____|____ Riwayat
-     |____|____ Profil
+     |____|____ Kelola Peminjaman
 
 Ide pengembangan Sesuai Target
 - Sekolah/Kampus: peminjaman alat lab, proyektor, ruang kelas
